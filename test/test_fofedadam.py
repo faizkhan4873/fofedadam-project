@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from optimizers.fofedadamw import FOFedAdamW
 
-# Simple model
+
 model = nn.Sequential(
     nn.Linear(10, 5),
     nn.ReLU(),
@@ -11,7 +11,7 @@ model = nn.Sequential(
 
 optimizer = FOFedAdamW(model)
 
-# Dummy data
+
 X = torch.randn(32, 10)
 y = torch.randn(32, 1)
 

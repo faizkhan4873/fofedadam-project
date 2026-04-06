@@ -18,7 +18,7 @@ def evaluate_model(model, X, y):
     try:
         auc = roc_auc_score(y, preds)
     except:
-        auc = 0.5  # fallback if only one class
+        auc = 0.5 
 
     f1 = f1_score(y, preds_binary, average="macro")
 

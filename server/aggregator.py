@@ -16,7 +16,6 @@ def fedavg_aggregate_dp(global_model, client_models, client_sizes,
             weight = client_sizes[i] / total_samples
             new_state_dict[key] += weight * client_model.state_dict()[key]
 
-        # 🔥 Add Gaussian noise
         noise = torch.randn_like(new_state_dict[key]) * noise_sigma * clip_norm
         new_state_dict[key] += noise
 

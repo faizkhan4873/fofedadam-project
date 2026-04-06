@@ -77,7 +77,7 @@ def federated_training(client_data, input_dim, rounds=10, dp=False):
             client_models.append(model)
             client_sizes.append(size)
 
-        # 🔥 Choose aggregation
+        
         if dp:
             global_model = fedavg_aggregate_dp(global_model, client_models, client_sizes)
         else:

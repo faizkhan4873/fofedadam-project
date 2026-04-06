@@ -4,18 +4,12 @@ import math
 
 class GLFractionalGradient:
     def __init__(self, alpha=0.7, K=10):
-        """
-        Grünwald–Letnikov fractional gradient
-
-        Args:
-            alpha: fractional order (0 < alpha <= 1)
-            K: history depth
-        """
+     
         self.alpha = alpha
         self.K = K
         self.history = []
 
-        # Precompute binomial coefficients
+        
         self.coeffs = self._compute_coeffs()
 
     def _compute_coeffs(self):
@@ -34,16 +28,7 @@ class GLFractionalGradient:
         return num / math.factorial(k)
 
     def update(self, grad):
-        """
-        Compute fractional gradient
-
-        Args:
-            grad: current gradient (torch tensor)
         
-        Returns:
-            fractional gradient
-        """
-
         # Store history
         self.history.insert(0, grad.clone())
         if len(self.history) > self.K:

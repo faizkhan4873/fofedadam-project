@@ -2,18 +2,7 @@ import numpy as np
 from collections import defaultdict
 
 def dirichlet_partition(X, y, num_clients=5, alpha=0.5, seed=42):
-    """
-    Split dataset into non-IID partitions using Dirichlet distribution.
-
-    Args:
-        X: features (numpy array)
-        y: labels (numpy array)
-        num_clients: number of hospitals
-        alpha: Dirichlet concentration (lower = more non-IID)
     
-    Returns:
-        dict: {client_id: (X_client, y_client)}
-    """
 
     np.random.seed(seed)
 
@@ -26,7 +15,7 @@ def dirichlet_partition(X, y, num_clients=5, alpha=0.5, seed=42):
         indices = class_indices[c]
         np.random.shuffle(indices)
 
-        # Dirichlet sampling
+
         proportions = np.random.dirichlet(alpha * np.ones(num_clients))
 
         # Convert proportions into splits

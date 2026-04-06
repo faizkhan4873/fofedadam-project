@@ -14,13 +14,13 @@ class FOFedAdamW:
         self.eps = eps
         self.weight_decay = weight_decay
 
-        self.t = 0  # time step
+        self.t = 0  
 
         # Initialize moments
         self.m = {}
         self.v = {}
 
-        # GL fractional module
+        
         self.gl_modules = {}
 
         for name, param in model.named_parameters():
@@ -28,7 +28,7 @@ class FOFedAdamW:
                 self.m[name] = torch.zeros_like(param.data)
                 self.v[name] = torch.zeros_like(param.data)
 
-                # Each parameter has its own GL history
+            
                 self.gl_modules[name] = GLFractionalGradient(alpha=alpha, K=K)
 
     def step(self):
@@ -40,20 +40,20 @@ class FOFedAdamW:
 
             grad = param.grad.data
 
-            # 🧠 Step 1: GL fractional gradient
+            
             frac_grad = self.gl_modules[name].update(grad)
 
-            # 🧠 Step 2: First moment (m)
+    
             self.m[name] = self.beta1 * self.m[name] + (1 - self.beta1) * frac_grad
 
-            # 🧠 Step 3: Second moment (v)
+        
             self.v[name] = self.beta2 * self.v[name] + (1 - self.beta2) * (frac_grad ** 2)
 
-            # 🧠 Step 4: Bias correction
+            
             m_hat = self.m[name] / (1 - self.beta1 ** self.t)
             v_hat = self.v[name] / (1 - self.beta2 ** self.t)
 
-            # 🧠 Step 5: Update with decoupled weight decay
+            
             update = m_hat / (torch.sqrt(v_hat) + self.eps)
 
             param.data = param.data - self.lr * update - self.lr * self.weight_decay * param.data

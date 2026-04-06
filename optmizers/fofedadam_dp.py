@@ -23,8 +23,7 @@ class FOFedAdamW_DP(FOFedAdamW):
                 param.grad.data *= clip_coef
 
     def step(self):
-        # 🔥 Clip before update
+        
         self.clip_gradients()
 
-        # Normal FOFedAdamW step
         super().step()

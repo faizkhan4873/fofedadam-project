@@ -1,7 +1,7 @@
 import numpy as np
 from data.dirichlet_partition import dirichlet_partition
 
-# dummy dataset
+
 X = np.random.randn(1000, 10)
 y = np.random.randint(0, 2, 1000)
 

@@ -1,6 +1,6 @@
 # FOFedAdamW: Fractional-Order Federated Learning with Adaptive Optimization
 
-## 📌 Overview
+## Overview
 
 This project implements the **FOFedAdamW algorithm**, a novel federated learning optimizer that integrates:
 
@@ -13,7 +13,7 @@ The system simulates **multi-hospital training under non-IID data** using Dirich
 
 ---
 
-## 🧠 Key Features
+## Key Features
 
 - Federated Learning (FedAvg aggregation)
 - Fractional Gradient Computation (GL derivative, K=10)
@@ -25,7 +25,7 @@ The system simulates **multi-hospital training under non-IID data** using Dirich
 
 ---
 
-## 📊 Results (Expected)
+## Results
 
 - Faster convergence than FedAvg
 - Higher AUC-ROC under non-IID data
@@ -33,7 +33,7 @@ The system simulates **multi-hospital training under non-IID data** using Dirich
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 data/            # Dirichlet partitioning
@@ -48,25 +48,7 @@ plot.py          # Visualization
 
 ---
 
-## ⚙️ Installation
-
-```bash
-git clone https://github.com/your-username/fofedadamw-project.git
-cd fofedadamw-project
-pip install -r requirements.txt
-```
-
----
-
-## 🚀 Run Training
-
-```bash
-python train.py
-```
-
----
-
-## 🔬 Research Contribution
+## Research Contribution
 
 This implementation follows the paper:
 
